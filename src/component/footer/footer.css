@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,400&family=Scheherazade+New:wght@600;700&display=swap');
+
+footer{
+    color: #fff;
+    background: #2c3e50;
+    font-family: 'Lato', sans-serif;
+    padding: 10px  0;
+    text-align: center;
+}
+

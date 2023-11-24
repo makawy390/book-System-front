@@ -1,0 +1,58 @@
+.nav-bar{
+    position: relative;
+    height: 100%;
+    position: relative;
+}
+
+.nav .listed-unstyle{
+    position: fixed;
+    background-color: #3C4245;
+    width: 192px;
+    height: 100%;
+    margin: 0;
+    list-style: none;
+    top: 0;
+    right: -192px;
+    transition: all 0.5s ease-in-out;
+  padding: 11px 15px 0 0 ;
+z-index: 1002;
+}
+.listed-unstyle li{
+    padding: 10px 0;
+}
+.listed-unstyle li a{
+    color: #fff;
+    text-decoration: none;
+}
+.listed-unstyle li a.active{
+    color: #50D890;
+}
+
+.ic{
+    width: 40px;
+    height: 40px;
+    background-color: #3C4245;
+    position: absolute;
+    cursor: pointer;
+    right: 192px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    color: #fff;
+    justify-content: center;
+}
+.ic svg{    
+    font-size: 25px;
+    width: 100%;
+}
+.ic svg.active{
+    animation: spin 1.2s infinite linear;
+}
+.nav .listed-unstyle.right{
+    right: 0;
+}
+@keyframes spin {
+  to{
+    transform: rotate(360deg);
+  }
+}

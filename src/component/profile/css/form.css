@@ -1,0 +1,25 @@
+
+.login , .register{
+    padding: 80px 0;
+    min-height: 93.5vh;
+}
+.login a , .register a{
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    display: inline;
+    
+}
+
+.login p , .register p{
+    display: inline;
+}
+.login button , .register button{
+    direction: ltr;
+    margin-top: 20px;
+}
+
+.login .link{
+padding-top: 15px;
+margin-bottom: 10px;    
+}

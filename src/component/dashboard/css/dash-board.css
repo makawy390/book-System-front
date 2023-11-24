@@ -1,0 +1,15 @@
+.dash-board{
+ padding: 80px 0;
+ height: 93.5vh;
+}
+canvas{
+ height: 300px !important;
+}
+.card-dash.one{
+ background-color: #3b82f6;
+ color: #fff;
+}
+.card-dash.two{
+ background-color: #22c55e;
+ color: #fff;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+body{
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    font-family: 'Scheherazade New', serif !important;
+}
+.books , .add-new , .edit{
+    padding: 50px 0;
+}
