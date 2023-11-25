@@ -6,3 +6,10 @@ min-height: 93.5vh;
     align-items: center;
     padding: 80px 0;
 }
+
+.profile img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    text-align: center;
+}

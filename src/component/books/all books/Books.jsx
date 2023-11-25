@@ -8,6 +8,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 import {useSelector } from 'react-redux';
 import { Button } from 'primereact/button';
 import { useState } from 'react';
+import {Image} from 'primereact/image'
 
 const Books = () => {
   const role = useSelector(state => state.data.login);
@@ -16,11 +17,15 @@ const Books = () => {
   const handleChange = (event, value) => {
     setPage(value);
   };
+  const imageBook = 'https://final-book-system.onrender.com/uploads/image';
  
   const booksData = useFetch(`${url}/books` , pageNum , 20);
+  console.log(booksData);
   const filtrationBooks = booksData?.map((books)=>(
-<Grid item xs={12} sm={6} md={6}  lg={4}  key={books._id}>
+<Grid item xs={12} sm={6} md={6}  lg={3}  key={books._id}>
       <CardContent>
+        <Image src={`${imageBook}/${books.image}`} alt="Image"  preview />
+
         <Typography gutterBottom variant="h5" component="div">
           {books.title}
         </Typography>

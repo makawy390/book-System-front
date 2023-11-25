@@ -13,6 +13,8 @@ const EditeBook = () => {
     const [desc , setDesc] = useState();
     const [link , setLink] = useState();
     const [price , setprice] = useState();
+    const [image , setImage]=useState();
+
     const [loading, setLoading] = useState(false);
   const load = () => {
       setLoading(true);
@@ -24,20 +26,22 @@ const EditeBook = () => {
 
  let config = {
     headers: {
-      'Authorization': 'Bearer ' + token
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'multipart/form-data',
     }
   }
-
-
 const   navigate = useNavigate();
 const handlerEdit = (e)=>{
     e.preventDefault();
+    const formDataFile = new FormData();
+    formDataFile.append('image',image);
     load();
     axios.patch(`${url_books}/books/update/${param.id}` , {
         title : name,
         description: desc,
         link : link,
-        price : price
+        price : price,
+        image : image
     },config).then((res) => {
         Swal.fire({
             position: 'top-end',
@@ -48,19 +52,16 @@ const handlerEdit = (e)=>{
           })
           console.log(res.data);
           navigate('/allBooks');
-            // fetchData();
     })
     .catch(err => console.error(err))
-
 }
-
   return (
     <div className='edit'>
     <Grid container spacing={2} justifyContent='center'>
       <Grid item xs={12} md={5}>
       <h2>تعديل كتاب</h2>
     <form>
- {/* <Box sx={{ display: 'flex',flexDirection: 'column','& .MuiTextField-root': { maxWidth: '50ch' }}} > */}
+  <input type='file' onChange={(e)=> setImage(e.target.files[0])} />
     <TextField fullWidth   placeholder="اسم الكتاب" id="fullWidth" sx={{margin : '10px 0'}} 
     onChange={(e) => setName(e.target.value)} 
      />
@@ -70,7 +71,6 @@ const handlerEdit = (e)=>{
     onChange={(e) => setLink(e.target.value)}   />
     <TextField fullWidth   placeholder="سعر الكتاب" id="fullWidth" sx={{margin : '10px 0' }} 
     onChange={(e) => setprice(e.target.value)} />
-    {/* </Box> */}
     <Button label="تعديل الكتاب" dir='ltr' icon="pi pi-check" loading={loading} onClick={handlerEdit}/>
     </form>
       </Grid>

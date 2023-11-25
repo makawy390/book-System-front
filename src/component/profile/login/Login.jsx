@@ -38,7 +38,8 @@ const Login = () => {
         navigate('/allBooks');
         dispatch(checkFunc());
     }).catch((err) =>{
-         setError(err.response.data.message)
+        //  setError(err.response.data.message)
+        console.log(err);
     });
     load();
     }

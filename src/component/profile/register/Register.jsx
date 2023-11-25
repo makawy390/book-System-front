@@ -6,13 +6,14 @@ import { Box, TextField , Grid} from '@mui/material';
 import '../css/form.css';
 import { Button } from 'primereact/button';
 import {RadioButton} from 'primereact/radiobutton'
+import { InputNumber } from 'primereact/inputnumber';
 
 const Register = () => {
   const initialState = {
     username : '',
     email : '' ,
     password: '',
-    age : Number,
+    age : undefined,
     gender : ''
   }
   const [formData , setFormData] = useState(initialState)
@@ -24,17 +25,27 @@ const Register = () => {
           setLoading(false);
       }, 2000);
   };
+const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  }
+  const [image , setImage]=useState();
 
     const onSubmited = (e)=>{
         e.preventDefault();
+        const formDataFile = new FormData();
+        formDataFile.append('image',image);
         load();
         axios.post(`${url_books}/user/register`,{
             username : formData.username,
             email : formData.email,
             password : formData.password,
             age : formData.age,
-            gender : formData.gender
-        }).then((response)=> {
+             gender : formData.gender,
+            profile : image
+
+        },config).then((response)=> {
             navigate('/');
           }).catch((error) =>{
             // setError(error)
@@ -52,22 +63,21 @@ const Register = () => {
     <form onSubmit={onSubmited} action='/' method='POST' >
 
 <Box sx={{ display: 'flex' ,flexDirection: 'column','& .MuiTextField-root': { maxWidth: '65ch' }}} >
+  <input type='file' onChange={(e)=> setImage(e.target.files[0])} />
 <TextField  placeholder="ادخل الاسم الثنائي" type='text'  name="username"  sx={{margin : '10px 0'}} 
     onChange={handelChange} value={formData.username} />
     <TextField  placeholder="ادخل بريدك الالكتروني" type='email'  name="email"  sx={{margin : '10px 0'}} 
     onChange={handelChange} value={formData.email} />
 <TextField value={formData.password}  placeholder="ادخل كلمة المرور" type="password" name="password"  sx={{margin : '10px 0'}}
      onChange={handelChange}  />
-  {/* <InputNumber inputId="withoutgrouping" placeholder='العمر' name='age'  value={formData.age} onChange={handelChange} 
-  useGrouping={false} /> */}
-  <input type="number" name='age'  value={formData.age} onChange={handelChange} />
+       <InputNumber id="number-input" placeholder='كم عمرك'  name='age' value={formData.age} onValueChange={handelChange} />
   <div className="flex">
     <RadioButton inputId="ingredient1" name="gender" value="female" onChange={handelChange}
  checked={formData.gender === 'female'} />انثي
 <RadioButton inputId="ingredient1" name="gender" value="male" onChange={handelChange}
  checked={formData.gender === 'male'} />ذكر
+  </div> 
 
-  </div>
     </Box>
     {/* {error === null? '' : 
      <>

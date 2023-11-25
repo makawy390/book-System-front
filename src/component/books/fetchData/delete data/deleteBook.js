@@ -17,15 +17,12 @@ const deleteBook = (book , data) => {
           'Your file has been deleted.',
           'success'
         )
-        
     axios.delete(`${url_books}/books/delete/${book._id}`)
     .then((res)=> {
       console.log(res);
        return data;
-    })
-    .catch((err)=> console.error(err));
+    }).catch((err)=> console.error(err));
       }
     })
-    }
-
+    } 
     export default deleteBook;
